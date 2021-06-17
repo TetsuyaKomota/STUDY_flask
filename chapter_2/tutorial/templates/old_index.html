@@ -1,0 +1,37 @@
+<!docstyle html>
+<html lang="ja">
+    <head>
+        <title>Index</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet"
+            href="{{url_for('static', filename='style.css')}}">
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        {% if flg %}
+            <p style="background-color: red; font-weight: bold;">
+                警告!
+            </p>
+        {% else %}
+            <p style="background-color: lightblue">
+                Information
+            </p>
+        {% endif %}
+
+        <ul>
+        {% for item in data %}
+        <li>{{item | upper}}</li>
+        {% endfor %}
+        <li>{{unknown | default("None")}}</li>
+        </ul>
+
+        {% autoescape True %}
+            <p>{{message}}</p>
+        {% endautoescape %}
+
+        {% autoescape False %}
+            <p>{{message}}</p>
+        {% endautoescape %}
+
+    </body>
+</html>
